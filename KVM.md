@@ -97,7 +97,7 @@ DNS2=8.8.8.8
 [root@localhost ~]# virt-install -n kvm1 -r 2048 --disk /var/kvm-bak/kvm.img,format=qcow2,size=50 --network bridge=br0 --os-type=linux --os-variant=rhel7.2 --cdrom /home/iso/CentOS-7-x86_64-DVD-1611.iso  --vnc --vncport=5910 --vnclisten=0.0.0.0
 
 
-###配置防火墙：
+### 配置防火墙：
 
 打开防火墙上的5910端口（如果防火墙为关闭则不用管）
 
