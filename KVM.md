@@ -115,7 +115,7 @@ DNS2=8.8.8.8
 
 [root@localhost ~]# systemctl restart network
 
-！[KVM](/png/KVM1.png)
+![KVM](/png/KVM1.png)
 
 之后就可以用xshell连接了
 
