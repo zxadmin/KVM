@@ -151,4 +151,4 @@ virsh define /etc/libvirt/qemu/kvm2.xml
 
 启动kvm2虚拟机后并使用vnc连接，和上述方法一样。
 
-![KVM](/png/kvm2.png)
+![KVM](/png/KVM2.png)
