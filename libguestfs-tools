@@ -1,0 +1,51 @@
+libguestfs 是一组 Linux 下的 C 语言的 API ，用来访问虚拟机的磁盘映像文件。
+其项目主页是http://libguestfs.org/ ，该工具包内包含的工具有virt-cat、virt-df、virt-ls、virt-copy-in、virt-copy-out、virt-edit、guestfs、guestmount、virt-list-filesystems、virt-list-partitions等工具，具体用法也可以参看官网。
+该工具可以在不启动KVM guest主机的情况下，直接查看guest主机内的文内容。
+也可以直接向img镜像中写入文件和复制文件到外面的物理机，当然其也可以像mount一样，支持挂载操作。
+[root@localhost ~]# yum -y install libguestfs-tools
+安装过libguestfs-tools工具后，会产生一系列命令如下：
+[root@localhost ~]# virt-
+virt-alignment-scan  virt-df              virt-inspector       virt-rescue          virt-win-reg
+virt-builder         virt-diff            virt-install         virt-resize          virt-xml
+virt-cat             virt-edit            virt-log             virt-sparsify        virt-xml-validate
+virt-clone           virt-filesystems     virt-ls              virt-sysprep         
+virt-copy-in         virt-format          virt-make-fs         virt-tar-in          
+virt-copy-out        virt-host-validate   virt-manager         virt-tar-out         
+virt-customize       virt-index-validate  virt-pki-validate    virt-what 
+
+libguestfs-tools工具的部分命令使用方便，但是执行速度不是很快，下面只对一些常用命令进行介绍
+
+1.virt-df 
+介绍：类似于虚拟机本地“df”命令
+[root@localhost ~]# virt-df -h vm1-clone
+Filesystem                                Size       Used  Available  Use%
+vm1-clone:/dev/sda1                       186M       7.2M       169M    4%
+vm1-clone:/dev/sda3                       8.4G       1.2G       6.8G   14%
+
+2.virt-cat 
+介绍：类似于虚拟机本地”cat”命令
+[root@localhost ~]# virt-cat -d vm1-clone /etc/hosts
+127.0.0.1       localhost.localdomain localhost
+::1             localhost6.localdomain6 localhost6
+
+3.virt-edit 
+介绍：类似于虚拟机本地”vi”命令，使用这个命令需要关闭虚拟机
+
+4.virt-ls 
+介绍：类似于虚拟机本地”ls”命令
+[root@localhost ~]# virt-ls -d vm1-clone /etc
+.pwd.lock
+DIR_COLORS
+DIR_COLORS.xterm
+NetworkManager
+X11
+acpi
+
+5.virt-copy-out 
+介绍：复制虚拟机文件到宿主机本地磁盘，类似于本地”cp”命令
+[root@localhost ~]# virt-copy-out -d vm1-clone /etc/hosts .
+
+6.virt-copy-in 
+介绍：复制宿主机本地文件到虚拟机磁盘，类似于本地”cp”命令
+
+[root@localhost ~]# virt-copy-in -d vm1-clone /tmp/ylhb /tmp
