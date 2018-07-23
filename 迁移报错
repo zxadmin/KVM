@@ -3,7 +3,7 @@ error: Failed to start domain CS-6-new
 error: unsupported configuration: guest and host CPU are not compatible: Host CPU does not provide required features: fma, movbe, fsgsbase, bmi1, avx2, smep, bmi2, erms, invpcid
 这是由于CPU信息不兼容造成的，可以修改xml的配置文件，使其兼容：
   
-    <cpu mode'custom' match='exact'>                                  
+    <cpu mode='custom' match='exact'>                                  
         <model>qemu64</model>                                        
         <feature name='svm' policy='disable'/>                        
     </cpu>
