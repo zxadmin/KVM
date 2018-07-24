@@ -20,6 +20,9 @@
 
 [root@localhost ~]# yum -y install qemu-kvm libvirt virt-install bridge-utils 
 
+### 安装虚拟系统管理器
+[root@localhost ~]# yum -y install virt-manager
+
 
 ### 验证安装结果，下图说明已经成功安装了
 
